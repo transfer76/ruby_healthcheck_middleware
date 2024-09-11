@@ -3,7 +3,7 @@
 ENV['RACK_ENV'] ||= 'test'
 
 require_relative 'support/config/simplecov'
-require 'ruby_healthcheck_middleware'
+require_relative '../lib/ruby_healthcheck_middleware'
 
 rspec_custom = ::File.join(::File.dirname(__FILE__), 'support/**/*.rb')
 ::Dir[::File.expand_path(rspec_custom)].sort.each { |file| require file unless file[/\A.+_spec\.rb\z/] }
@@ -24,9 +24,7 @@ RSpec.configure do |config|
   config.disable_monkey_patching!
   config.warnings = true
 
-  if config.files_to_run.one?
-    config.default_formatter = 'doc'
-  end
+  config.default_formatter = 'doc' if config.files_to_run.one?
 
   config.profile_examples = 10
   config.order = :random
