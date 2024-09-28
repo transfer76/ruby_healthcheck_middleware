@@ -1,0 +1,8 @@
+---
+
+variables:
+  RUBY_VERSION: "2.7"
+  TEST_UNIT_TAG: ruby-healthcheck-middleware
+include:
+  - project: "project-name/infrastructure/ci-cd"
+    file: "/ruby-gem/.gitlab-ci.yml"
